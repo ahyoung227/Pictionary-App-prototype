@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Pictionary App-prototype</title>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css'>
+	<link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+	<!-- partial:index.partial.html -->
+	<div id="app" class="container-fluid">
+
+		<!-- title -->
+		<div class="jumbotron">
+			<h1 class="title">Multiplayer Pictionary Game</h1>
+			<button v-if="isRunning" @click="toggleTimer">Reset timer</button>
+			<button v-else="!isRunning" @click="toggleTimer">Click to start Drawing!</button>
+
+			<p>{{ timer }} seconds</p>
+
+		</div>
+
+		<div class="row">
+			<!-- player -->
+			<div class="col-3">
+				<h2 id="players">Players</h2>
+				<input ref="players" type="text" placeholder="What's your name?" v-model="playername">
+				<h3 v-show="playername" class="showname">I'm {{ playername }}</h3>
+				<button @click="savePlayer">Save</button>
+				<br>
+				<br>
+
+				<player v-for="player in players" :player="player" @remove-player="removePlayer"></player>
+				<button v-if="playername" @click="removeAllPlayer">Remove All Player</button>
+			</div>
+
+			<!-- canvas	 -->
+			<div class="col-md-6">
+				<button @click="getWords" v-if="host">Show me what to draw</button>
+				<span class="hostword" v-if="host">draw: <strong>{{ word }}</strong></span>
+				<hr>
+				<div v-if="host">
+					<vue-canvas></vue-canvas>
+				</div>
+				<div v-else>
+					<watch></watch>
+				</div>
+			</div>
+
+			<!-- chat box -->
+			<div class="col-s-3">
+				<h2 id="chat">Chat Box</h2>
+				<input v-model="message" placeholder="Write a message here" @keypress.enter.prevent="sendMessage"
+					required />
+				<message v-for="message in messages" :message="message"></message>
+				<hr>
+				<button @click="deleteChat">Delete all chat</button>
+			</div>
+
+		</div>
+
+		<!-- words box -->
+		<div class="col-s-3">
+			<h2 id="words">Add new words</h2>
+			<input type="text" v-model="newWord" placeholder="Add words here" @keypress.enter="saveWord">
+			<hr>
+			<p v-for="word of words">
+				{{ word.word }}
+			</p>
+		</div>
+
+	</div>
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+
+	<script>
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyBb_SYDL2lZXzFMSJDIKvu0kvdnq8AgAu8",
+			authDomain: "covid19-simulator-d224a.firebaseapp.com",
+			databaseURL: "https://covid19-simulator-d224a.firebaseio.com",
+			projectId: "covid19-simulator-d224a",
+			storageBucket: "covid19-simulator-d224a.appspot.com",
+			messagingSenderId: "862343523215",
+			appId: "1:862343523215:web:b8f2df3cf0fcb4f48979fa"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+	</script>
+	<!-- partial -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/js/bootstrap.min.js'></script>
+	<script src="./script.js"></script>
+
+</body>
+
+</html>

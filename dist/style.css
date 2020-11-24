@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Raleway:wght@300&display=swap');
+
+#app {
+	font-family: 'Raleway', sans-serif;
+}
+
+.title {
+	font-family: 'Anton', sans-serif;
+}
+
+.jumbotron {
+	text-align: center;
+	background: url(https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80) 50% 70%; 
+}
+
+p.playername .hostname {
+	font-size: 20px;
+	outline-color: blue;
+	outline-style: dotted;
+}
+
+canvas {
+	outline: 1px solid black;
+}
+
+.button {
+	/*Green*/
+	background-color: #4caf50;
+	border: none;
+	color: white;
+	padding: 30px;
+	display: inline-block;
+	margin: 4px 2px;
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	border-radius: 20px;
+	text-align: center;
+	font-size: 16px;
+}
+
+.button10 {
+	background-color: #4caf50; /* Green */
+	border: none;
+	color: white;
+	padding: 16px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+.button2 {
+	/*Blue*/
+	background-color: #008cba;
+}
+.button3 {
+	/*Red*/
+	background-color: #f44336;
+}
+.button4 {
+	/*Gray*/
+	background-color: #e7e7e7;
+}
+.button5 {
+	/*Black*/
+	background-color: #555555;
+}
+
+.button6 {
+	background-color: white;
+	color: black;
+	border: 2px solid #555555;
+}
+
+.button6:hover {
+	background-color: #e7e7e7;
+}
+
+.hostword {
+	text-align: center;
+}
+
+#chat, #players, #words {
+	font-family: 'Anton', sans-serif;
+}
+
+#chat {
+	color: gray;
+}
+
+#players {
+	color: gray;
+}
+
+#words {
+	color: gray;
+}
