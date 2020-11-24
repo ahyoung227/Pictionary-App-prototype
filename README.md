@@ -15,6 +15,7 @@
 - [BOOTSTRAP]
 - [JAVASCRIPT]
 - [VUE]
+- [FIREBASE]
 
 <!-- LICENSE -->
 
